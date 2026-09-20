@@ -253,7 +253,7 @@ def _pairing_ok(headers):
 # Headers a reverse proxy adds when relaying to a loopback backend. A request carrying any of
 # them reached loopback through a proxy, so the peer address proves nothing about who sent it.
 # A proxy that adds none of these cannot be detected here; the README says not to run one.
-_PROXY_HEADERS = ("X-Forwarded-For", "Forwarded", "Tailscale-User-Login", "Tailscale-User-Name")
+_PROXY_HEADERS = ("X-Forwarded-For", "Forwarded")
 
 
 def _pair_info_ok(peer_ip, headers):
