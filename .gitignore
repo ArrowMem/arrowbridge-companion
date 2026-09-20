@@ -1,0 +1,7 @@
+__pycache__/
+.pytest_cache/
+.venv/
+# TLS material, if you ever generate it in here. Keep it outside the repo.
+*.crt
+*.key
+*.pem
