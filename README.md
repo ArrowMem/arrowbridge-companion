@@ -129,7 +129,7 @@ client.
 | Route | Who | What |
 | --- | --- | --- |
 | `POST /chat` | paired | `{"message": "...", "history": [...]}` in, `{"reply": "..."}` out. Works with llama.cpp and Ollama. |
-| `POST /v1/messages` | paired | Anthropic Messages wire shape, proxied to an upstream that speaks it natively (llama.cpp's server does; Ollama does not). The caller's `system` is ignored; `model` is resolved against `ARROWBRIDGE_MODEL_MAP` (`NAME=upstream_model[@url]`, comma separated). Streaming requests get a valid SSE body carrying the whole reply in one delta, because the guard needs the complete text. |
+| `POST /v1/messages` | paired | The Messages API wire shape, proxied to an upstream that speaks it natively (llama.cpp's server does; Ollama does not). The caller's `system` is ignored; `model` is resolved against `ARROWBRIDGE_MODEL_MAP` (`NAME=upstream_model[@url]`, comma separated). Streaming requests get a valid SSE body carrying the whole reply in one delta, because the guard needs the complete text. |
 | `POST /v1/messages/count_tokens` | paired | Pass-through. Some clients hang without it. |
 | `GET /health` | paired | Upstream, model, configured model names. |
 | `GET /pair-test` | anyone | The text-box test page. Contains no secret; the key is typed in. |
@@ -173,7 +173,9 @@ footer is empty and no second pass runs. The guard runs either way.
   to the grinding attack on the other leg. This repo has no phone client, only the test driver.
 - `?key=` on `/pair-test` puts the key in that browser's history. Type it instead when you can.
 - Your model server is your responsibility. This program does not bind it to loopback for you;
-  check that it is not listening on the network itself.
+  check that it is not listening on the network itself. If you would rather have that check done
+  for you, on this and everything else the machine exposes, ArrowMem Guard is the same team's
+  machine sweep (arrowmem.ca/guard.html). It is separate from this program and optional.
 - Everything the model says other than a telephone number reaches you unchanged.
 
 ## Tests
@@ -187,10 +189,9 @@ python -m pytest -q
 LAN-reachable adapter and will also find any other ArrowBridge companion advertising on your
 network.
 
-## Hosted and installer-grade version
+## Where this sits
 
-This is the LAN rung, on its own. The hosted assistant and the installer that sets this up for
-you live at arrowmem.ca.
+This is the LAN rung, on its own, and it is complete as it stands. ArrowMem is at arrowmem.ca.
 
 ## License
 
