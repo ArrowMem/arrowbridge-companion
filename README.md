@@ -196,3 +196,9 @@ This is the LAN rung, on its own, and it is complete as it stands. ArrowMem is a
 ## License
 
 MIT, ArrowMem Inc. See `LICENSE`.
+
+## Credits
+
+Built by ArrowMem Inc. with Claude (Anthropic) as the coding collaborator. Reviewed adversarially by a second
+model session that did not write it, and verified on a second machine that did not build it. Issues and pull
+requests welcome.
